@@ -64,10 +64,10 @@
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
           
-            import {getDataBase, get, ref, child}
+            import {getDatabase, get, ref, child}
             from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"
 
-            const db = getDataBase(); // possibly remove
+            const db = getDatabase(); // possibly remove
 
             var findNameF = document.querySelector("#findNameF");
             var findImgF = document.querySelector("#findImgF");
