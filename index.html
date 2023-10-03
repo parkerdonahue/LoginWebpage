@@ -64,7 +64,7 @@
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
           
-            import {getDataBase, set, get, update, remove, ref, child}
+            import {getDataBase, get, ref, child}
             from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"
 
             const db = getDataBase(); // possibly remove
@@ -98,7 +98,7 @@
                         findFoodF.innerHTML = "Favorite Food: " + snapshot.val().food;
                         findYearF.innerHTML = "Birth Year: " + snapshot.val().year;
                     }
-                    else {"No Data Found"}
+                    else {"User Not Found"}
                 })
 
                 get(child(dbref, "ZI0A60RSjnVM71ss8bJWeIMp03E3"))
@@ -110,13 +110,12 @@
                         findFoodS.innerHTML = "Favorite Food: " + snapshot.val().food;
                         findYearS.innerHTML = "Birth Year: " + snapshot.val().year;
                     }
-                    else {"No Data Found"}
+                    else {"User Not Found"}
                 })
 
             }
 
             findData();
-                </script>
-
-    </body>
+        </script>
+        </body>
 </html>
