@@ -92,7 +92,7 @@
                 get(child(dbref, "Su2B1532bWNcKcOLGtrYHEh0T8i1"))
                 .then((snapshot)=>{
                     if(snapshot.exists()){
-                        findNameF.innterHTML = "Name: " + snapshot.val().name;
+                        findNameF.innerHTML = "Name: " + snapshot.val().name;
                         findImgF.src = snapshot.val().image;
                         findCountryF.innerHTML = "Country: " + snapshot.val().country;
                         findFoodF.innerHTML = "Favorite Food: " + snapshot.val().food;
@@ -104,7 +104,7 @@
                 get(child(dbref, "ZI0A60RSjnVM71ss8bJWeIMp03E3"))
                 .then((snapshot)=>{
                     if(snapshot.exists()){
-                        findNameS.innterHTML = "Name: " + snapshot.val().name;
+                        findNameS.innerHTML = "Name: " + snapshot.val().name;
                         findImgS.src = snapshot.val().image;
                         findCountryS.innerHTML = "Country: " + snapshot.val().country;
                         findFoodS.innerHTML = "Favorite Food: " + snapshot.val().food;
