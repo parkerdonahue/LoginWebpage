@@ -6,12 +6,116 @@
         <link rel = "stylesheet" href= "login.css">
     </head>
     <body>
-    <img src="logo-color.png"
-        height = "250"
-        width = "250"/>
-    <h1> Login App</h1>
-    <iframe src="https://thunkable.site/w/3MXTjVihObIBNXnGu2oug" title="Login App Thunkable Page" height = 1000 width = 500></iframe>
 
+        <img src="logo-color.png"
+        height = "250"
+        width = "250"/> 
+
+        <div id = UserDetailsF>
+            <h2 id = "findNameF" type = "text"> </h2>
+            <br>
+            <img id = "findImgF" src = "" alt = "">
+            <br>
+            <h2 id = "findFoodF" type = "text"> </h2>
+            <br>
+            <h2 id = "findYearF" type = "text"> </h2>
+            <br>
+            <h2 id = "findCountryF" type = "text"> </h2>
+            <br>
+
+
+        </div>
+        
+        <div id = UserDetailsS>
+            <h2 id = "findNameS" type = "text"> </h2>
+            <br>
+            <img id = "findImgS" src = "" alt = "">
+            <br>
+            <h2 id = "findFoodS" type = "text"> </h2>
+            <br>
+            <h2 id = "findYearS" type = "text"> </h2>
+            <br>
+            <h2 id = "findCountryS" type = "text"> </h2>
+            <br>
+
+        </div> 
+
+
+        <script type = "module">
+            
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+            
+            //web app's Firebase configuration
+            
+            const firebaseConfig = {
+              apiKey: "AIzaSyCXl6rCB8pqyozXl29Ta_OQina1Zs8ZMBE",
+              authDomain: "partner-work-week-2.firebaseapp.com",
+              databaseURL: "https://partner-work-week-2-default-rtdb.firebaseio.com",
+              projectId: "partner-work-week-2",
+              storageBucket: "partner-work-week-2.appspot.com",
+              messagingSenderId: "209240054445",
+              appId: "1:209240054445:web:6bb6b1c9c76578fa4c4424",
+              measurementId: "G-TPJ5KPWJ8N"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+          
+            import {getDataBase, set, get, update, remove, ref, child}
+            from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"
+
+            const db = getDataBase(); // possibly remove
+
+            var findNameF = document.querySelector("#findNameF");
+            var findImgF = document.querySelector("#findImgF");
+            var findFoodF = document.querySelector("#findFoodF");
+            var findYearF = document.querySelector("#findYearF");
+            var findCountryF = document.querySelector("#findCountryF");
+
+
+
+            var findNameS = document.querySelector("#findNameS");
+            var findImgS = document.querySelector("#findImgS");
+            var findFoodS = document.querySelector("#findFoodS");
+            var findYearS = document.querySelector("#findYearS");
+            var findCountryS = document.querySelector("#findCountryS");
+
+
+
+
+            function findData(){
+                const dbref = ref(db);
+
+                get(child(dbref, "Su2B1532bWNcKcOLGtrYHEh0T8i1"))
+                .then((snapshot)=>{
+                    if(snapshot.exists()){
+                        findNameF.innterHTML = "Name: " + snapshot.val().name;
+                        findImgF.src = snapshot.val().image;
+                        findCountryF.innerHTML = "Country: " + snapshot.val().country;
+                        findFoodF.innerHTML = "Favorite Food: " + snapshot.val().food;
+                        findYearF.innerHTML = "Birth Year: " + snapshot.val().year;
+                    }
+                    else {"No Data Found"}
+                })
+
+                get(child(dbref, "ZI0A60RSjnVM71ss8bJWeIMp03E3"))
+                .then((snapshot)=>{
+                    if(snapshot.exists()){
+                        findNameS.innterHTML = "Name: " + snapshot.val().name;
+                        findImgS.src = snapshot.val().image;
+                        findCountryS.innerHTML = "Country: " + snapshot.val().country;
+                        findFoodS.innerHTML = "Favorite Food: " + snapshot.val().food;
+                        findYearS.innerHTML = "Birth Year: " + snapshot.val().year;
+                    }
+                    else {"No Data Found"}
+                })
+
+            }
+
+                findData();
+                </script>
 
     </body>
 </html>
